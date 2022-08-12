@@ -25,12 +25,12 @@ def http_request(method, url, params=None, headers=None, data: Optional[Union[di
     req = request.Request(url, method=method, headers=headers, data=data)
     res = request.urlopen(req, timeout=timeout)
     try:
-        res_body: str = res.read().decode()
+        body: str = res.read().decode()
     except IncompleteRead as e:
-        res_body: str = e.partial.decode()
+        body: str = e.partial.decode()
     if logger:
-        logger.debug(f'response: {res.status}, {res_body}')
-    return res, res_body
+        logger.debug(f'response: {res.status}, {body}')
+    return res, body
 
 
 EntryStatus = Union[Literal['read'], Literal['unread']]
@@ -134,13 +134,12 @@ def append_entries_after_date(client, entry_ids, date, after_entry_id=None):
 
 
 
-
-
 def parse_time(s) -> datetime.datetime:
     format = '%Y-%m-%dT%H:%M:%S%z'
     if '.' in s:
         format = '%Y-%m-%dT%H:%M:%S.%f%z'
     return datetime.datetime.strptime(s, format)
+
 
 if __name__ == '__main__':
     main()
