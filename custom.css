@@ -1,31 +1,31 @@
-textarea[name=custom_css] {
-  width: 100%;
-  height: 500px;
-}
-
+/* # variables */
 :root {
   --entry-content-font-weight: initial;
-  --entry-content-font-family: -apple-system,BlinkMacSystemFont,Helvetica,helvetica neue,segoe ui,Roboto,Oxygen,Ubuntu,Cantarell,open sans,sans-serif;
   --entry-content-quote-font-family: var(--entry-content-font-family);
-  --entry-content-color: #111;
+  --category-background-color: #fff7c7;
+  --category-border-color: var(--category-background-color);
+  --category-link-color: #8e6d09;
 }
 
+/* # entry */
+/* ## optimize text rendering */
 .entry header h1,
 .entry-content {
 -webkit-font-smoothing: antialiased;
 text-rendering: optimizeLegibility;
 }
 
+/* ## typography and readability */
 .entry-content {
 line-height: 1.6em;
 font-size: 18px;
 padding-top: 30px;
 }
-
 .entry-content p {
 margin-bottom: 20px;
 }
 
+/* ## refine {date, author actions, meta, pagination} style */
 .entry-date {
 font-size: 15px;
 }
@@ -40,45 +40,37 @@ padding-top: 0;
 margin-top: 15px;
 }
 
+/* # dark theme */
 @media (prefers-color-scheme: dark) {
 :root {
-    --body-background: #151515;
-    --body-color: #777;
-    --entry-content-color: #ddd;
-    --entry-header-title-link-color: #eee;
-    --title-color: #eee;
-    --header-link-color: #888;
-    --header-link-hover-color: #aaa;
-    --header-active-link-color: #ccc;
-    --logo-color: #ddd;
-    --logo-hover-color-span: #ddd;
-    --pagination-link-color: #888;
-    --link-color: #4174db;
-    --input-background: #333;
-    --input-color: #aaa;
-    --input-focus-color: #aaa;
     --feed-has-unread-background-color: rgb(42 92 44 / 17%);
     --feed-has-unread-border-color: #798778;
-    --category-background-color: #8f7729;
-    --category-border-color: var(--category-background-color);
-}
-.item-title a {
-    color: #ccc;
-}
-.item-title a:hover {
-    color: #eee;
-}
-.item-meta a:hover {
-    color: #aaa;
+    --feed-parsing-error-background-color: #2f2020;
+    --category-background-color: #474432;
+    --category-link-color: #8d7222;
 }
 }
 
+/* # list */
 .pagination-top {
 margin-bottom: 20px;
 }
 
+/* # misc */
+@media screen and (max-width: 500px) {
+main {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+}
 
 .header li a:hover {
 /* fix: this style is intended to use a variable but failed to do so */
 color: var(--header-link-hover-color);
+}
+
+/* ## editor */
+textarea[name=custom_css] {
+  width: 100%;
+  height: 500px;
 }
